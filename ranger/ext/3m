@@ -566,9 +566,8 @@ class KittyImageDisplayer(ImageDisplayer, FileManagerAware):
 
     def _late_init(self):
         # tmux
-        # the problem is not tmux, the problem is that terminfo is not set correctly
-        #if 'kitty' not in os.environ['TERM'] and '256color' not in os.environ['TERM']:
-        if 'tmux' in os.environ['TERM']:
+        # the problem is not tmux, the problem is the default terminfo is not set
+        if 'kitty' not in os.environ['TERM'] and '256color' not in os.environ['TERM']:
             # this doesn't seem to work, ranger freezes...
             # commenting out the response check does nothing
             # self.protocol_start = b'\033Ptmux;\033' + self.protocol_start
